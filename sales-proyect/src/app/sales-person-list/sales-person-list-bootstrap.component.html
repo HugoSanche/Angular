@@ -1,0 +1,28 @@
+<!--table-bordered es la propiedad de bootstrap para el color de la columna-->
+<table class="table table-bordered ">
+    <thead>
+        <tr class="table-dark">
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Sales Volume</th>
+            <th>Met Quota?</th>
+        </tr>
+    </thead>
+
+<tbody>
+    <!--[ngClass] sirve para poner condicion, si es true se ejecuta .highlight -->
+    <tr *ngFor="let tempsalesPersonList of salesPersonList" [ngClass]="{'highlight':tempsalesPersonList.salesVolume>=6000}">
+        <td>{{tempsalesPersonList.firstName}}</td>
+        <td>{{tempsalesPersonList.lastName}}</td>
+        <td>{{tempsalesPersonList.email}}</td>
+
+        <td>{{tempsalesPersonList.salesVolume|currency : 'MXN' : 'symbol'}}</td>
+        <td >
+        <!--Ejmplo de una condicion, falso ejecuta #myElse -->
+        <div  *ngIf="tempsalesPersonList.salesVolume>=6000;else myElse">Si</div>
+        <ng-template  #myElse>No</ng-template>
+        </td>
+    </tr>
+</tbody>
+</table>
