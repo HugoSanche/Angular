@@ -11,8 +11,9 @@
     </thead>
 
 <tbody>
-    <!--[ngClass] sirve para poner condicion, si es true se ejecuta .highlight -->
-    <tr *ngFor="let tempsalesPersonList of salesPersonList" [ngClass]="{'highlight':tempsalesPersonList.salesVolume>=6000}">
+    <!--[ngClass] sirve para poner condicion, si es true se ejecuta el css .highlight -->
+    <!-- si es menor a 4000 se ejecuta el css .warning-->
+    <tr *ngFor="let tempsalesPersonList of salesPersonList" [ngClass]="{'highlight':tempsalesPersonList.salesVolume>=6000,'warning': tempsalesPersonList.salesVolume <= 4000}">
         <td>{{tempsalesPersonList.firstName}}</td>
         <td>{{tempsalesPersonList.lastName}}</td>
         <td>{{tempsalesPersonList.email}}</td>
